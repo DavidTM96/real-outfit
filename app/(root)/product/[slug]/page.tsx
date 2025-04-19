@@ -1,3 +1,4 @@
+import ProductImages from "@/components/shared/product/product-images";
 import ProductPrice from "@/components/shared/product/product-price";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,10 +17,11 @@ const ProductDetailsPage = async (props: {
   return (
     <>
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-5"></div>
-        {/* Images Column */}
-        <div className="col-span-2">
-          {/* Details Column */}
+        <div className="grid grid-cols-1 md:grid-cols-5">
+          {/* Images Column */}
+          <div className="col-span-2">
+            <ProductImages images={product.images} />
+          </div>
           <div className="col-span-2 p-5">
             <div className="flex flex-col gap-6">
               <p>
@@ -27,7 +29,7 @@ const ProductDetailsPage = async (props: {
               </p>
               <h1 className="h3-bold">{product.name}</h1>
               <p>
-                {product.rating} of {product.numReviews} Reviews
+                {Number(product.rating)} of {product.numReviews} Reviews
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                 <ProductPrice
@@ -47,7 +49,9 @@ const ProductDetailsPage = async (props: {
               <CardContent className="p-4">
                 <div className="mb-2 flex justify-between">
                   <div>Price</div>
-                  <ProductPrice value={Number(product.price)} />
+                  <div>
+                    <ProductPrice value={Number(product.price)} />
+                  </div>
                 </div>
                 <div className="mb-2 flex justify-between">
                   <div>Status</div>
