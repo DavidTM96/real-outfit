@@ -23,7 +23,11 @@ const CredentialsSignInForm = () => {
     const { pending } = useFormStatus();
 
     return (
-      <Button disabled={pending} className="w-full" variant="default">
+      <Button
+        disabled={pending}
+        className="w-full cursor-pointer"
+        variant="default"
+      >
         {pending ? "Signing in..." : "Sign In"}
       </Button>
     );
@@ -65,7 +69,7 @@ const CredentialsSignInForm = () => {
 
         <div className="text-sm text-center text-muted-foreground">
           Don&apos;t have an account? {""}
-          <Link href="/sign-up" target="_self" className="link">
+          <Link href="/sign-up" target="_self" className="link hover:underline">
             Sign Up
           </Link>
         </div>
