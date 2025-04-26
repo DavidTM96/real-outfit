@@ -1,38 +1,54 @@
-# real-outfit
+# Real Outfit
+Welcome to **Real Outfit** — a modern E-commerce platform where shopping meets simplicity! 🛒✨
+This project is still a work in progress, and I'm actively building new features.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**Real Outfit** allows users to browse products, view detailed product information, and manage their shopping cart. With a clean, responsive interface and modern tech stack, this platform is built for a smooth and enjoyable shopping experience.
 
-## Getting Started
+## Features
+- ✅ User authentication with NextAuth
+- 🛍️ Browse and view product details
+- 🛒 Add and remove items from the shopping cart (in progress)
+- 🌗 Toggle between light and dark modes
+- 📱 Fully responsive design (mobile, tablet, desktop)
+- 🚀 Built for scalability with modern tools and best practices
 
-First, run the development server:
+## Technologies Used
+- **Frontend**: Next.js, TypeScript, TailwindCSS, ShadCN UI
+- **Backend**: NextJS
+- **Database**: Prisma ORM (PostgreSQL)
+- **Authentication**: NextAuth
+- **Form Handling & Validation**: React Hook Form, Zod
+- **Other Tools**: ESLint, Prettier
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How to use:
+1. **Sign up / Log in** using NextAuth authentication.
+2. **Browse products** on the homepage.
+3. **Click on a product** to view detailed information.
+4. **Add products to your cart** (cart functionality is under development!).
+5. **Switch between light and dark mode** for your preferred viewing experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+More features like checkout, order history, and admin dashboards are coming soon!
+   
+## Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+👉 Visit Real Outfit: <a href="https://real-outfit-86dmsikw7-davidtm96s-projects.vercel.app/" target="_blank">Real Outfit</a>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development Setup
+To run the project locally:
 
-## Learn More
+1. **Clone the repository**: git clone git@github.com:DavidTM96/real-outfit.git
+3. **Navigate to the project folder**: cd real-outfit-ecommerce
+4. **Install dependencies**: npm install
+5. **Set up environment variables**: (You will need your own database URL and NextAuth credentials)
+6. **Run the development server**: npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+## Contact
+Got questions or want to connect?
+Feel free to reach out:
+- Email: <a href="mailto:dtorrez1996@gmail.com">dtorrez1996@gmail.com</a>
+- LinkedIn: <a href="https://www.linkedin.com/in/david-torrez/" target="_blank">David Torrez</a>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Thank you** for checking out Real Outfit!
+Stay tuned — more updates, features, and improvements are coming soon. 🚀
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
