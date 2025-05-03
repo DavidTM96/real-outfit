@@ -1,10 +1,11 @@
-import '@/assets/styles/globals.css';
-import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from '@/lib/constants';
-import type { Metadata } from 'next';
-import { ThemeProvider } from 'next-themes';
-import { Inter } from 'next/font/google';
+import "@/assets/styles/globals.css";
+import { Toaster } from "@/components/ui/sonner";
+import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
+import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
@@ -21,15 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider
-          attribute='class'
-          defaultTheme='light'
+          attribute="class"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
