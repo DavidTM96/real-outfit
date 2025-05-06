@@ -21,7 +21,7 @@ const AddToCart = ({ item }: { item: CartItem }) => {
     }
 
     // Handle successful addition to cart
-    toast.success(`${item.name} added to cart`, {
+    toast.success(`${res.message}`, {
       action: (
         <Button
           className="bg-primary text-white hover:bg-gray-800 cursor-pointer"
