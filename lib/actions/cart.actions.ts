@@ -196,7 +196,7 @@ export async function removeItemFromCart(productId: string) {
     revalidatePath(`/product/${product.slug}`);
 
     return {
-      sucess: true,
+      success: true,
       message: `${product.name} was removed from cart`,
     };
   } catch (error) {
