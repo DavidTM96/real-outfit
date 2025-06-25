@@ -68,3 +68,8 @@ export function formatCurrency(amount: number | string | null) {
     return "NaN";
   }
 }
+
+// Shorten UUID
+export function formatId(id: string) {
+  return `..${id.substring(id.length - 6)}`;
+}
