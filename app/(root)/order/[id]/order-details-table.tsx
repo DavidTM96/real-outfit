@@ -14,6 +14,7 @@ import {
 import {
   approvePayPalOrder,
   createPayPalOrder,
+  deliverOrder,
   updateOrderToPaidCOD,
 } from "@/lib/actions/order.actions";
 import { formatCurrency, formatDateTime, formatId } from "@/lib/utils";
@@ -103,6 +104,27 @@ const OrderDetailsTable = ({
     );
   };
 
+  // Button to mark order as delivered
+  const MarkAsDeliveredButton = () => {
+    const [isPending, startTransition] = useTransition();
+
+    return (
+      <Button
+        type="button"
+        disabled={isPending}
+        onClick={() =>
+          startTransition(async () => {
+            const res = await deliverOrder(order.id);
+
+            toast.success(res.message);
+          })
+        }
+      >
+        {isPending ? "Processing" : "Mark As Delivered"}
+      </Button>
+    );
+  };
+
   return (
     <>
       <h1 className="py-4-text-2xl mb-2">Order {formatId(id)}</h1>
@@ -133,7 +155,7 @@ const OrderDetailsTable = ({
               </p>
               {isDelivered ? (
                 <Badge variant="secondary">
-                  Delivered at {formatDateTime(deliveredAt!).dateTime}
+                  Delivered on {formatDateTime(deliveredAt!).dateTime}
                 </Badge>
               ) : (
                 <Badge variant="destructive">Not Delivered</Badge>
