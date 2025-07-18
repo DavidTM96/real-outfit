@@ -69,10 +69,7 @@ const AdminProductsPage = async (props: {
                 <Button asChild variant="outline" size="sm">
                   <Link href={`/admin/products/${product.id}`}>Edit</Link>
                 </Button>
-                <DeleteDialog
-                  id={product.id}
-                  action={DeleteProduct}
-                ></DeleteDialog>
+                <DeleteDialog id={product.id} action={DeleteProduct} />
               </TableCell>
             </TableRow>
           ))}
