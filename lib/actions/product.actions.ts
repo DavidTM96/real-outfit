@@ -2,7 +2,9 @@
 import { prisma } from "@/db/prisma";
 import { convertToPlainObject, formatError } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 import { LATEST_PRODUCTS_LIMIT, PAGE_SIZE } from "../constants";
+import { insertProductSchema } from "../validators";
 
 // Get latest products
 export async function getLatestProducts() {
@@ -71,6 +73,28 @@ export async function DeleteProduct(id: string) {
     return {
       success: true,
       message: "Product deleted successfully",
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: formatError(error),
+    };
+  }
+}
+
+// Create a product
+export async function createProduct(data: z.infer<typeof insertProductSchema>) {
+  try {
+    const product = insertProductSchema.parse(data);
+    await prisma.product.create({
+      data: product,
+    });
+
+    revalidatePath("/admin/products");
+
+    return {
+      success: true,
+      message: "Product created successfully",
     };
   } catch (error) {
     return {
