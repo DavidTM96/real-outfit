@@ -2,15 +2,18 @@
 
 import { createProduct, updateProduct } from "@/lib/actions/product.actions";
 import { productDefaultValues } from "@/lib/constants";
+import { UploadButton } from "@/lib/uploadthing";
 import { insertProductSchema, updateProductSchema } from "@/lib/validators";
 import { Product } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ControllerRenderProps, SubmitHandler, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 import {
   Form,
   FormControl,
@@ -34,10 +37,9 @@ const ProductForm = ({
   const router = useRouter();
 
   const form = useForm<z.infer<typeof insertProductSchema>>({
-    resolver:
-      type === "Update"
-        ? zodResolver(updateProductSchema)
-        : zodResolver(insertProductSchema),
+    resolver: zodResolver(
+      type === "Create" ? insertProductSchema : updateProductSchema
+    ),
     defaultValues:
       product && type === "Update" ? product : productDefaultValues,
   });
@@ -74,6 +76,8 @@ const ProductForm = ({
       }
     }
   };
+
+  const images = form.watch("images");
 
   return (
     <Form {...form}>
@@ -153,7 +157,7 @@ const ProductForm = ({
                 "category"
               >;
             }) => (
-              <FormItem className="w-full flex flex-col items-start">
+              <FormItem className="w-full">
                 <FormLabel>Category</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter category" {...field} />
@@ -174,7 +178,7 @@ const ProductForm = ({
                 "brand"
               >;
             }) => (
-              <FormItem className="w-full flex flex-col items-start">
+              <FormItem className="w-full">
                 <FormLabel>Brand</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter brand" {...field} />
@@ -197,7 +201,7 @@ const ProductForm = ({
                 "price"
               >;
             }) => (
-              <FormItem className="w-full flex flex-col items-start">
+              <FormItem className="w-full">
                 <FormLabel>Price</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter product price" {...field} />
@@ -218,7 +222,7 @@ const ProductForm = ({
                 "stock"
               >;
             }) => (
-              <FormItem className="w-full flex flex-col items-start">
+              <FormItem className="w-full">
                 <FormLabel>Stock</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter stock" {...field} />
@@ -230,6 +234,43 @@ const ProductForm = ({
         </div>
         <div className="flex flex-col gap-5 md:flex-row upload-field">
           {/* Images */}
+          <FormField
+            control={form.control}
+            name="images"
+            render={() => (
+              <FormItem className="w-full">
+                <FormLabel>Images</FormLabel>
+                <Card>
+                  <CardContent className="space-y-2 mt-2 min-h-48">
+                    <div className="flex-start space-x-2">
+                      {images.map((image: string) => (
+                        <Image
+                          key={image}
+                          src={image}
+                          alt="product image"
+                          className="size-20 object-cover object-center rounded-sm"
+                          width={100}
+                          height={100}
+                        />
+                      ))}
+                      <FormControl>
+                        <UploadButton
+                          endpoint="imageUploader"
+                          onClientUploadComplete={(res: { url: string }[]) => {
+                            form.setValue("images", [...images, res[0].url]);
+                          }}
+                          onUploadError={(error: Error) => {
+                            toast.error(`ERROR! ${error.message}`);
+                          }}
+                        />
+                      </FormControl>
+                    </div>
+                  </CardContent>
+                </Card>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
         <div className="upload-field">{/* isFeatured */}</div>
         <div>
