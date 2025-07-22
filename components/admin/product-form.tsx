@@ -295,15 +295,18 @@ const ProductForm = ({
                   </FormItem>
                 )}
               />
-              {isFeatured && banner && (
-                <Image
-                  src={banner}
-                  alt="banner image"
-                  className="w-full object-cover object-center rounded-sm"
-                  width={1920}
-                  height={680}
-                />
-              )}
+              {isFeatured &&
+                banner &&
+                typeof banner === "string" &&
+                banner.startsWith("http") && (
+                  <Image
+                    src={banner}
+                    alt="banner image"
+                    className="w-full object-cover object-center rounded-sm"
+                    width={1920}
+                    height={680}
+                  />
+                )}
               {isFeatured && !banner && (
                 <UploadButton
                   endpoint="imageUploader"
