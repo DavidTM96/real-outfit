@@ -295,6 +295,15 @@ const ProductForm = ({
                   </FormItem>
                 )}
               />
+              {isFeatured && banner && (
+                <Image
+                  src={banner}
+                  alt="banner image"
+                  className="w-full object-cover object-center rounded-sm"
+                  width={1920}
+                  height={680}
+                />
+              )}
             </CardContent>
           </Card>
         </div>
