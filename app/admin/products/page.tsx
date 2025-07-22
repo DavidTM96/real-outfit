@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DeleteProduct, getAllProducts } from "@/lib/actions/product.actions";
+import { deleteProduct, getAllProducts } from "@/lib/actions/product.actions";
 import { formatCurrency, formatId } from "@/lib/utils";
 import Link from "next/link";
 
@@ -69,7 +69,7 @@ const AdminProductsPage = async (props: {
                 <Button asChild variant="outline" size="sm">
                   <Link href={`/admin/products/${product.id}`}>Edit</Link>
                 </Button>
-                <DeleteDialog id={product.id} action={DeleteProduct} />
+                <DeleteDialog id={product.id} action={deleteProduct} />
               </TableCell>
             </TableRow>
           ))}
