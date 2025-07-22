@@ -304,6 +304,17 @@ const ProductForm = ({
                   height={680}
                 />
               )}
+              {isFeatured && !banner && (
+                <UploadButton
+                  endpoint="imageUploader"
+                  onClientUploadComplete={(res: { url: string }[]) => {
+                    form.setValue("banner", res[0].url);
+                  }}
+                  onUploadError={(error: Error) => {
+                    toast.error(`ERROR! ${error.message}`);
+                  }}
+                />
+              )}
             </CardContent>
           </Card>
         </div>
