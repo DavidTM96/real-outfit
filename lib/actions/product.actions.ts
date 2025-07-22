@@ -66,7 +66,7 @@ export async function getAllProducts({
 }
 
 // Delete a product
-export async function DeleteProduct(id: string) {
+export async function deleteProduct(id: string) {
   try {
     const productExists = await prisma.product.findFirst({
       where: {
