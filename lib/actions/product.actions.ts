@@ -70,6 +70,17 @@ export async function getAllProducts({
   // Category filter
   const categoryFilter = category && category !== "all" ? { category } : {};
 
+  // Price filter
+  const priceFilter: Prisma.ProductWhereInput =
+    price && price !== "all"
+      ? {
+          price: {
+            gte: Number(price.split("-"[0])),
+            lte: Number(price.split("-"[1])),
+          },
+        }
+      : {};
+
   const data = await prisma.product.findMany({
     orderBy: {
       createdAt: "desc",
@@ -77,6 +88,7 @@ export async function getAllProducts({
     where: {
       ...queryFilter,
       ...categoryFilter,
+      ...priceFilter,
     },
     skip: (page - 1) * limit,
     take: limit,
