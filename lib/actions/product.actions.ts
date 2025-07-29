@@ -81,6 +81,16 @@ export async function getAllProducts({
         }
       : {};
 
+  // Rating filter
+  const ratingFilter =
+    rating && rating !== "all"
+      ? {
+          rating: {
+            gte: Number(rating),
+          },
+        }
+      : {};
+
   const data = await prisma.product.findMany({
     orderBy: {
       createdAt: "desc",
@@ -89,6 +99,7 @@ export async function getAllProducts({
       ...queryFilter,
       ...categoryFilter,
       ...priceFilter,
+      ...ratingFilter,
     },
     skip: (page - 1) * limit,
     take: limit,
