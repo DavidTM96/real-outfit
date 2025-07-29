@@ -71,6 +71,9 @@ export async function getAllProducts({
     orderBy: {
       createdAt: "desc",
     },
+    where: {
+      ...queryFilter,
+    },
     skip: (page - 1) * limit,
     take: limit,
   });
