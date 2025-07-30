@@ -75,8 +75,8 @@ export async function getAllProducts({
     price && price !== "all"
       ? {
           price: {
-            gte: Number(price.split("-"[0])),
-            lte: Number(price.split("-"[1])),
+            gte: Number(price.split("-")[0]),
+            lte: Number(price.split("-")[1]),
           },
         }
       : {};
