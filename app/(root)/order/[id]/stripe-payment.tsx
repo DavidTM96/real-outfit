@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
 import {
   Elements,
+  LinkAuthenticationElement,
   PaymentElement,
   useElements,
   useStripe,
@@ -39,6 +40,11 @@ const StripePayment = ({
         <div className="text-xl">Stripe Checkout</div>
         {errorMessage && <div className="text-destructive">{errorMessage}</div>}
         <PaymentElement />
+        <div>
+          <LinkAuthenticationElement
+            onChange={(e) => setEmail(e.value.email)}
+          />
+        </div>
         <Button
           className="w-full"
           size="lg"
