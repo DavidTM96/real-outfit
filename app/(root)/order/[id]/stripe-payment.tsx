@@ -55,9 +55,9 @@ const StripePayment = ({
             error?.type === "card_error" ||
             error?.type === "validation_error"
           ) {
-            setErrorMessage(error.message ?? "An unknown error ocurred");
+            setErrorMessage(error?.message ?? "An unknown error occurred");
           } else if (error) {
-            setErrorMessage(error.message ?? "An unknown error ocurred");
+            setErrorMessage("An unknown error occurred");
           }
         })
         .finally(() => setIsLoading(false));
