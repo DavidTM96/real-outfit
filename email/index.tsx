@@ -2,6 +2,7 @@ import { APP_NAME, SENDER_EMAIL } from "@/lib/constants";
 import { Order } from "@/types";
 import dotenv from "dotenv";
 import { Resend } from "resend";
+import PurchaseReceiptEmail from "./purchase-receipt";
 
 dotenv.config();
 
@@ -12,6 +13,6 @@ export const sendPurchaseReceipt = async ({ order }: { order: Order }) => {
     from: `${APP_NAME} <${SENDER_EMAIL}>`,
     to: order.user.email,
     subject: `Order Confirmation ${order.id}`,
-    react: <>EMAIL</>,
+    react: <PurchaseReceiptEmail order={order} />,
   });
 };
