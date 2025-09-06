@@ -2,7 +2,7 @@ import { APP_NAME, SENDER_EMAIL } from "@/lib/constants";
 import { Order } from "@/types";
 import dotenv from "dotenv";
 import { Resend } from "resend";
-import PurchaseReceiptEmail from "./purchase-receipt";
+import { PurchaseReceiptEmail } from "./purchase-receipt";
 
 dotenv.config();
 
