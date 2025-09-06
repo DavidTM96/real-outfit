@@ -17,7 +17,7 @@ import {
 
 const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
-const PurchaseReceiptEmail = ({ order }: { order: Order }) => {
+export function PurchaseReceiptEmail({ order }: { order: Order }) {
   return (
     <Html>
       <Preview>View order receipt</Preview>
@@ -94,6 +94,6 @@ const PurchaseReceiptEmail = ({ order }: { order: Order }) => {
       </Tailwind>
     </Html>
   );
-};
+}
 
 export default PurchaseReceiptEmail;
