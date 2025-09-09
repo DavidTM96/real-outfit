@@ -2,9 +2,9 @@ import { APP_NAME, SENDER_EMAIL } from "@/lib/constants";
 import { Order } from "@/types";
 import dotenv from "dotenv";
 import { Resend } from "resend";
-import { PurchaseReceiptEmail } from "./purchase-receipt";
-
 dotenv.config();
+
+import PurchaseReceiptEmail from "./purchase-receipt";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
