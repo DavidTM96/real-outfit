@@ -68,7 +68,7 @@ type OrderInformationProps = {
   order: Order;
 };
 
-export function PurchaseReceiptEmail({ order }: OrderInformationProps) {
+export default function PurchaseReceiptEmail({ order }: OrderInformationProps) {
   return (
     <Html>
       <Preview>View order receipt</Preview>
@@ -113,7 +113,7 @@ export function PurchaseReceiptEmail({ order }: OrderInformationProps) {
                       className="rounded"
                       src={
                         item.image.startsWith("/")
-                          ? `${process.env.NEXT_PUBLIC_SERVER_URL} ${item.image}`
+                          ? `${process.env.production ? process.env.VERCEL_URL : "http://localhost:3000"}${item.image}`
                           : item.image
                       }
                     />
