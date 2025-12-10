@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 
 // Static target date (replace with desired date)
-const TARGET_DATE = new Date("2025-09-30T00:00:00");
+const TARGET_DATE = new Date("2026-09-30T00:00:00");
 
 // Function to calculate the time remaining
 const calculateTimeRemaining = (targetDate: Date) => {
